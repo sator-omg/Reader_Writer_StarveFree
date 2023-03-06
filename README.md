@@ -54,7 +54,7 @@ To address this issue, one possible solution is to implement a mechanism that gi
 * A "write_mutex" semaphore initialized to 1.
 * A "no_readers" semaphore initialized to 1.
 * An integer variable "read_count" initialized to 0.
-## Reader thread:
+## Reader process:
 
 * Wait on "no_readers" semaphore to block writers while readers are accessing the resource.
 * Wait on "read_mutex" semaphore to acquire read access.
@@ -104,7 +104,7 @@ do {
 } while (true);
 
 ```
-## Writer thread:
+## Writer process:
 
 * Wait on "no_readers" semaphore to block writers while readers are accessing the resource.
 * Wait on "write_mutex" semaphore to acquire write access.
